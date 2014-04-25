@@ -1,0 +1,9 @@
+---
+- name: Install some useful system packages
+  apt: pkg={{item}} update-cache=yes
+  with_items:
+    - vim
+    - git
+    - curl
+    - tree
+

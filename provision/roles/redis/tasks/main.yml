@@ -1,0 +1,3 @@
+---
+- name: Install redis server and client
+  apt: pkg=redis-server

@@ -1,0 +1,7 @@
+- name: System dependencies
+  apt: pkg={{item}}
+  with_items: system_packages
+
+- name: Install Multilogger
+  pip: name=multilogger virtualenv={{venv_path}}
+

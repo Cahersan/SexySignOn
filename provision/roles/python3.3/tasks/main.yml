@@ -1,0 +1,24 @@
+---
+- name: Install python-software-properties
+  apt: pkg=python-software-properties update-cache=yes
+
+- name: Add repository
+  apt_repository: repo="ppa:fkrull/deadsnakes"
+
+- name: Install Python 3.3 
+  apt: pkg={{item}} update-cache=yes
+  with_items: 
+    - python3.3
+    - python3.3-dev
+
+- name: Install setuptools with python 3.3
+  shell: "wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python3.3"
+
+- name: Install pip
+  easy_install: name=pip
+
+- name: Install Virtualenv and Virtualenwrapper
+  pip: name={{item}}
+  with_items:
+    - virtualenv
+    - virtualenvwrapper

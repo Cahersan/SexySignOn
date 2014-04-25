@@ -1,0 +1,9 @@
+- name: Add repository
+  apt_repository: repo="ppa:miurahr/openresty"
+
+- name: Install nginx-openresty
+  apt: pkg=nginx-openresty
+
+- name: Copy site, configuration, and lua files
+  copy: src=etc dest=/
+  notify: reload nginx
