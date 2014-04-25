@@ -1,8 +1,0 @@
-system_packages:
-  - python-psycopg2
-  - libpq-dev
-  - postgresql
-  - postgresql-contrib
-
-venv_path: "/home/vagrant/.venvs/multilogger"
-

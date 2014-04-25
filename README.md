@@ -7,8 +7,15 @@ To make it work, use the provisioning script.
 
 This system consists of the following.
 
-Multilogger has the following dependencies (must check):
+Multilogger has the following dependencies (met if provisioning with the
+provided ansible script):
 - python3.3 (add ppa:fkrull/deadsnakes)
 - redis-server
 - nginx-openresty (add ppa:miurahr/openresty)
 - libpq-dev
+
+Also install django-formulator as follows:
+
+    pip install git+https://github.com/Cahersan/django-formulator.git
+
+
