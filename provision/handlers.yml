@@ -1,8 +1,0 @@
----
-- name: restart nginx
-  service: name=nginx state=restarted
-  sudo_user: root
-
-- name: restart uwsgi
-  service: name=uwsgi state=restarted
-  sudo_user: root
