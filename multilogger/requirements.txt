@@ -1,4 +1,6 @@
 django==1.6.1
+dj-database-url==0.3.0
+django-cache-url==0.8.0
 django-configurations==0.5.1
 django-redis-sessions==0.4.0
 django-braces==1.2.2
@@ -12,3 +14,6 @@ django-avatar==2.0
 djangorestframework==2.3.12
 djorm-ext-expressions==0.6
 djorm-ext-pguuid==0.1
+django-debug-toolbar==1.1
+unicode-slugify==0.1.1
+django-autoslug==1.7.2

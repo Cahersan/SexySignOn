@@ -1,6 +1,6 @@
 # build
 *.egg-info/
-xbuild/
+build/
 dist/
 
 # Basics
