@@ -112,7 +112,7 @@ class Common(Configuration):
     ########## MANAGER CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
     ADMINS = (
-        ('Carlos de las Heras', 'cahersan@gmail.com'),
+        ('admin' 'admin@example.com'),
     )
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -121,7 +121,7 @@ class Common(Configuration):
 
     ########## DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://Carlos de las Heras:CHANGEME@localhost/multilogger')
+    DATABASES = values.DatabaseURLValue('postgres://username:password@localhost/multilogger')
     ########## END DATABASE CONFIGURATION
 
     ########## CACHING
