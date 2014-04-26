@@ -1,9 +1,9 @@
 - name: Provision tasks for SexySignOn
   hosts: all
 
- pre_tasks:
-   - name: Install build-essentials
-     apt: pkg=build-essential update-cache=yes
+  pre_tasks:
+    - name: Install build-essentials
+      apt: pkg=build-essential update-cache=yes
 
   roles:
    - python3.3
