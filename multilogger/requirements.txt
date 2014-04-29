@@ -5,9 +5,9 @@ django-configurations==0.5.1
 django-redis-sessions==0.4.0
 django-braces==1.2.2
 django-crispy-forms==1.4.0
-django-floppyforms==1.1
+django-floppyforms==1.1.1
 South==0.8.2
-django-model-utils==1.5.0
+django-model-utils==2.0.3
 django-allauth==0.13.0
 psycopg2==2.5
 django-avatar==2.0
