@@ -11,7 +11,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from rest_framework import routers
-from api import views
+from multilogger.api import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -24,20 +24,18 @@ urlpatterns = patterns('',
         TemplateView.as_view(template_name='pages/about.html'),
         name="about"),
 
-    # url(r'^$', include('register.urls', namespace='register')),
-
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
     # User management
-    url(r'^users/', include("users.urls", namespace="users")),
+    url(r'^users/', include("multilogger.users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
 
     # Uncomment the next line to enable avatars
     url(r'^avatar/', include('avatar.urls')),
 
     # Your stuff: custom urls go here
-    url(r'^$', include('register.urls', namespace='register')),
+    url(r'^$', include('multilogger.register.urls', namespace='register')),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 

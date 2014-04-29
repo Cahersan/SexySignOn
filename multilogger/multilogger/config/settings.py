@@ -45,6 +45,7 @@ class Common(Configuration):
     )
     THIRD_PARTY_APPS = (
         'south',            # Database migration helpers:
+        'formulator',
         'crispy_forms',     # Form layouts
         'floppyforms',      # Form rendering in templates
         'avatar',           # for user avatars
@@ -53,10 +54,9 @@ class Common(Configuration):
 
     # Apps specific for this project go here.
     LOCAL_APPS = (
-        'users',  # custom users app
         # Your stuff: custom apps go here
-        'register',
-        'formulator',
+        'multilogger.users',  # custom users app
+        'multilogger.register',
     )
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -74,7 +74,7 @@ class Common(Configuration):
     ########## MIDDLEWARE CONFIGURATION
     MIDDLEWARE_CLASSES = (
         #'django.contrib.sessions.SessionMiddleware',
-        'middleware.sso.SSOSessionMiddleware',
+        'multilogger.middleware.sso.SSOSessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -213,10 +213,10 @@ class Common(Configuration):
     ########## END MEDIA CONFIGURATION
 
     ########## URL Configuration
-    ROOT_URLCONF = 'config.urls'
+    ROOT_URLCONF = 'multilogger.config.urls'
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
-    WSGI_APPLICATION = 'config.wsgi.application'
+    WSGI_APPLICATION = 'multilogger.config.wsgi.application'
     ########## End URL Configuration
 
     ########## AUTHENTICATION CONFIGURATION
@@ -303,17 +303,17 @@ class Local(Common):
     EMAIL_BACKEND = values.Value('django.core.mail.backends.console.EmailBackend')
     ########## End mail settings
 
-    ########## django-debug-toolbar
-    MIDDLEWARE_CLASSES = Common.MIDDLEWARE_CLASSES + ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-    INSTALLED_APPS += ('debug_toolbar',)
+   # ########## django-debug-toolbar
+   # MIDDLEWARE_CLASSES = Common.MIDDLEWARE_CLASSES + ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+   # INSTALLED_APPS += ('debug_toolbar',)
 
-    INTERNAL_IPS = ('127.0.0.1',)
+   # INTERNAL_IPS = ('127.0.0.1',)
 
-    DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False,
-        'SHOW_TEMPLATE_CONTEXT': True,
-    }
-    ########## end django-debug-toolbar
+   # DEBUG_TOOLBAR_CONFIG = {
+   #     'INTERCEPT_REDIRECTS': False,
+   #     'SHOW_TEMPLATE_CONTEXT': True,
+   # }
+   # ########## end django-debug-toolbar
 
     ########## Your local stuff: Below this line define 3rd party libary settings
 

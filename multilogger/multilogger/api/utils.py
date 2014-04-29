@@ -3,7 +3,7 @@ from redis import Redis
 
 from redis_sessions.session import SessionStore
 
-from users.models import User
+from multilogger.users.models import User
 
 
 def get_logged_users():

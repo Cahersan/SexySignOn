@@ -4,8 +4,8 @@ from django.shortcuts import render
 
 from rest_framework import viewsets
 
-from users.serializers import UserSerializer
-from users.models import User
+from multilogger.users.serializers import UserSerializer
+from multilogger.users.models import User
 
 from .utils import get_logged_users
 

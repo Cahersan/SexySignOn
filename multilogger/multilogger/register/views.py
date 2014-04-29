@@ -6,7 +6,7 @@ from formulator.models import Form
 from .models import Register
 from .conf import settings
 
-@login_required()
+#@login_required()
 def formView(request):
     host = request.get_host()
     reg = Register.objects.get(url=host)
