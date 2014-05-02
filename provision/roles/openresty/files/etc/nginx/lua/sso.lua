@@ -15,8 +15,7 @@ if IDCookie ~= nil then
     -- check for redis connection
     local ok, err = red:connect("127.0.0.1", 6379)
     if not ok then
-        ngx.say("failed to connect to Redis Server")
-        -- ngx.exec("/error")
+        ngx.say("Failed to connect to Redis Server")
         return
     end
 
@@ -30,7 +29,7 @@ if IDCookie ~= nil then
 
     -- If there's a cookie, check that it is stored in redis
     if not sData.username then
-        ngx.exec("/auth")
+        ngx.say("Error. User unknown.")
         return
     end
     
@@ -44,4 +43,4 @@ end
 
 -- Internally rewrite the URL so that we serve
 -- /auth/ if there's no valid token.
-ngx.exec("/auth")
+ngx.redirect("/login")

@@ -16,23 +16,26 @@ server {
 
     location / {
         access_by_lua_file /etc/nginx/lua/sso.lua;
-#       proxy_pass http://localhost:8080;
-        proxy_pass http://127.0.0.1:8000/;
+        proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host $http_host;
     }
 
-    location /auth {
-        default_type text/html;
-#        content_by_lua 'ngx.say("There is no cookie")';
-        proxy_pass http://127.0.0.1:8000/accounts/login/;
+    location /login {
+        proxy_pass http://127.0.0.1:8000/login;
         proxy_set_header Host $http_host;
     }
 
-    location /error {
-        default_type text/html;
-        content_by_lua 'ngx.say("failed to connect to Redis Server")';
+    location /signup {
+        proxy_pass http://127.0.0.1:8000/signup;
+        proxy_set_header Host $http_host;
     }
-     
+
+    location /test {
+        #proxy_pass http://$http_host/landing/award;
+        #default_type 'text/plain';
+        #content_by_lua ngx.say(ngx.var.http_host);
+    }
+
 #    location /clientapp {
 #       access_by_lua_file lua/sso.lua;
 #

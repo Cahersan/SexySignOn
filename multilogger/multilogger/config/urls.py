@@ -11,16 +11,17 @@ from django.contrib import admin
 admin.autodiscover()
 
 from rest_framework import routers
-from multilogger.api import views
+from multilogger.register import views as register_views
+from multilogger.api import views as api_views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
+router.register(r'users', api_views.UserViewSet)
 
 urlpatterns = patterns('',
-    url(r'^home/$',
+    url(r'^login/home/$',
         TemplateView.as_view(template_name='pages/home.html'),
         name="home"),
-    url(r'^about/$',
+    url(r'^login/about/$',
         TemplateView.as_view(template_name='pages/about.html'),
         name="about"),
 
@@ -35,8 +36,11 @@ urlpatterns = patterns('',
     url(r'^avatar/', include('avatar.urls')),
 
     # Your stuff: custom urls go here
-    url(r'^$', include('multilogger.register.urls', namespace='register')),
+    url(r'^signup/$', register_views.formView, name='register_signup'),
     url(r'^api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^login/$', 'django.contrib.auth.views.login', {
+            'template_name': 'pages/login.html'
+            }),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
