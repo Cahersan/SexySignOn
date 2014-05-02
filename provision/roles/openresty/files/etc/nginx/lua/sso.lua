@@ -29,7 +29,7 @@ if IDCookie ~= nil then
 
     -- If there's a cookie, check that it is stored in redis
     if not sData.username then
-        ngx.say("Error. User unknown.")
+        ngx.redirect("/login")
         return
     end
     

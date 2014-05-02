@@ -18,12 +18,9 @@ router = routers.DefaultRouter()
 router.register(r'users', api_views.UserViewSet)
 
 urlpatterns = patterns('',
-    url(r'^login/home/$',
-        TemplateView.as_view(template_name='pages/home.html'),
-        name="home"),
-    url(r'^login/about/$',
-        TemplateView.as_view(template_name='pages/about.html'),
-        name="about"),
+    url(r'^$',
+        TemplateView.as_view(template_name='pages/landing.html'),
+        name="landing"),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
@@ -36,11 +33,11 @@ urlpatterns = patterns('',
     url(r'^avatar/', include('avatar.urls')),
 
     # Your stuff: custom urls go here
-    url(r'^signup/$', register_views.formView, name='register_signup'),
+    url(r'^signup/$', register_views.formView, name='signup'),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^login/$', 'django.contrib.auth.views.login', {
-            'template_name': 'pages/login.html'
+            'template_name': 'pages/login.html',
             }),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
