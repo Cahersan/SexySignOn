@@ -11,7 +11,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 from rest_framework import routers
-from multilogger.register import views as register_views
 from multilogger.api import views as api_views
 
 router = routers.DefaultRouter()
@@ -26,14 +25,15 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # User management
-    url(r'^users/', include("multilogger.users.urls", namespace="users")),
+    #url(r'^users/', include("multilogger.users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
 
     # Uncomment the next line to enable avatars
     url(r'^avatar/', include('avatar.urls')),
 
     # Your stuff: custom urls go here
-    url(r'^signup/$', register_views.formView, name='signup'),
+
+    url(r'^signup/', include('multilogger.register.urls', namespace='register')),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^login/$', 'django.contrib.auth.views.login', {

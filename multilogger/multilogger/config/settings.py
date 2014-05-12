@@ -50,6 +50,7 @@ class Common(Configuration):
         'floppyforms',      # Form rendering in templates
         'avatar',           # for user avatars
         'rest_framework',   # REST APIs
+        #'django_hstore',    # HStore
     )
 
     # Apps specific for this project go here.

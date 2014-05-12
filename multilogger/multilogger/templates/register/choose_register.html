@@ -1,0 +1,6 @@
+<h3>Choose a registration:</h3>
+<ul>
+{% for r in registers %}
+    <li><a href="/signup/{{ r.uuid.hex }}">{{ r.url }}</a></li>
+{% endfor %}
+</ul>

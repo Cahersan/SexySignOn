@@ -28,7 +28,7 @@ if IDCookie ~= nil then
     local UUID = sData.uuid
 
     -- If there's a cookie, check that it is stored in redis
-    if not sData.username then
+    if not sData.email then
         ngx.redirect("/login")
         return
     end

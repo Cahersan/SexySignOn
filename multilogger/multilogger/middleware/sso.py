@@ -48,7 +48,6 @@ class SSOSessionMiddleware(object):
                     if hasattr(request, 'user') and request.user.is_authenticated():
                         request.session['uuid'] = request.user.uuid.urn.split(":")[2]
                         request.session['site'] = request.get_host()
-                        request.session['username'] = request.user.username
                         request.session['email'] = request.user.email
                     request.session.save()
         return response

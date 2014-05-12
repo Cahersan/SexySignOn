@@ -4,8 +4,13 @@
 
 {% load crispy_forms_tags %}
 
+{% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
 <form action="/contact/" method="post">{% csrf_token %}
-{{ register_form|crispy }}
+  {{ user_form|crispy }}
+  {{ register_form|crispy }}
 <input type="submit" value="Submit" />
 </form>
 
