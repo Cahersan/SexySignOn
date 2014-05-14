@@ -4,6 +4,9 @@
 - name: Install nginx-openresty
   apt: pkg=nginx-openresty
 
+- name: copy nginx upstart script
+  copy: src=nginx.conf dest=/etc/init
+
 - name: Copy site, configuration, and lua files
   copy: src=etc dest=/
   notify: reload nginx

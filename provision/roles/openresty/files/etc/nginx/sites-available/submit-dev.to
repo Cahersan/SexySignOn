@@ -35,8 +35,8 @@ server {
 
     location /test {
         #proxy_pass http://$http_host/landing/award;
-        #default_type 'text/plain';
-        #content_by_lua ngx.say(ngx.var.http_host);
+        default_type 'text/plain';
+        content_by_lua ngx.say(ngx.var.http_host);
     }
 
 #    location /clientapp {

@@ -1,0 +1,5 @@
+- name: Copy upstart script to /etc/init
+  copy: src=multilogger.conf dest=/etc/init
+
+- name: install multilogger with pip in edit mode
+  pip: name=multilogger extra_args='-e' chdir=/vagrant virtualenv=/home/vagrant/.venvs/multilogger
