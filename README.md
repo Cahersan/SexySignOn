@@ -24,3 +24,9 @@ A postgres database is set during provision:
   * __username:__ username
   * __database name:__ multilogger
   * __password:__ password
+
+To install the hstore extension do the following
+
+    sudo su postgres
+    psql multilogger
+    CREATE EXTENSION hstore; # Within the postgres terminal

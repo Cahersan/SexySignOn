@@ -35,7 +35,7 @@ class Register(AbstractBaseModel):
 class Profile(AbstractBaseModel):
     user = models.ForeignKey(User)
     apps = models.ManyToManyField(App)
-    #data = hstore.DictionaryField()
+    data = hstore.DictionaryField(null=True)
 
     def __str__(self):
         return 'User ' + self.user.username + ' in site ' + self.site.name

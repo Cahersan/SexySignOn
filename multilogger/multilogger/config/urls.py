@@ -28,11 +28,6 @@ urlpatterns = patterns('',
     #url(r'^users/', include("multilogger.users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
 
-    # Uncomment the next line to enable avatars
-    url(r'^avatar/', include('avatar.urls')),
-
-    # Your stuff: custom urls go here
-
     url(r'^signup/', include('multilogger.register.urls', namespace='register')),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

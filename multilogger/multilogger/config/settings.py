@@ -48,9 +48,9 @@ class Common(Configuration):
         'formulator',
         'crispy_forms',     # Form layouts
         'floppyforms',      # Form rendering in templates
-        'avatar',           # for user avatars
+        #'avatar',           # for user avatars
         'rest_framework',   # REST APIs
-        #'django_hstore',    # HStore
+        'django_hstore',    # HStore
     )
 
     # Apps specific for this project go here.
@@ -66,9 +66,9 @@ class Common(Configuration):
     INSTALLED_APPS += (
         # Needs to come last for now because of a weird edge case between
         #   South and allauth
-        'allauth',  # registration
-        'allauth.account',  # registration
-        'allauth.socialaccount',  # registration
+        #'allauth',  # registration
+        #'allauth.account',  # registration
+        #'allauth.socialaccount',  # registration
     )
     ########## END APP CONFIGURATION
 
@@ -160,8 +160,8 @@ class Common(Configuration):
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
     TEMPLATE_CONTEXT_PROCESSORS = (
         'django.contrib.auth.context_processors.auth',
-        "allauth.account.context_processors.account",
-        "allauth.socialaccount.context_processors.socialaccount",
+#        "allauth.account.context_processors.account",
+#        "allauth.socialaccount.context_processors.socialaccount",
         'django.core.context_processors.debug',
         'django.core.context_processors.i18n',
         'django.core.context_processors.media',
@@ -223,7 +223,7 @@ class Common(Configuration):
     ########## AUTHENTICATION CONFIGURATION
     AUTHENTICATION_BACKENDS = (
         "django.contrib.auth.backends.ModelBackend",
-        "allauth.account.auth_backends.AuthenticationBackend",
+#        "allauth.account.auth_backends.AuthenticationBackend",
     )
 
     # Some really nice defaults
