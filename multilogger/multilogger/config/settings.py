@@ -48,9 +48,9 @@ class Common(Configuration):
         'formulator',
         'crispy_forms',     # Form layouts
         'floppyforms',      # Form rendering in templates
-        #'avatar',           # for user avatars
         'rest_framework',   # REST APIs
         'django_hstore',    # HStore
+        'django_extensions',
     )
 
     # Apps specific for this project go here.
@@ -122,7 +122,7 @@ class Common(Configuration):
 
     ########## DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://username:password@localhost/multilogger')
+    DATABASES = values.DatabaseURLValue('postgres://multilogger:multilogger@localhost/multilogger')
     ########## END DATABASE CONFIGURATION
 
     ########## CACHING

@@ -3,6 +3,9 @@ from django import forms
 
 from .models import User
 
+class LoginForm(forms.Form):
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
 
 class UserForm(forms.ModelForm):
 
@@ -11,4 +14,4 @@ class UserForm(forms.ModelForm):
         model = User
 
         # Constrain the UserForm to just these fields.
-        fields = ("first_name", "last_name")
+        fields = ("email",)

@@ -12,6 +12,7 @@ admin.autodiscover()
 
 from rest_framework import routers
 from multilogger.api import views as api_views
+from multilogger.users import views
 
 router = routers.DefaultRouter()
 router.register(r'users', api_views.UserViewSet)
@@ -31,8 +32,6 @@ urlpatterns = patterns('',
     url(r'^signup/', include('multilogger.register.urls', namespace='register')),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^login/$', 'django.contrib.auth.views.login', {
-            'template_name': 'pages/login.html',
-            }),
+    url(r'^login/$', views.login_view, name='login'),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

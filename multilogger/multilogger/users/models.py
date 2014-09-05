@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from djorm_pguuid.fields import UUIDField 
 
 class AbstractBaseModel(models.Model):
-    uuid = UUIDField(auto_add=True, db_index=True)
+    uuid = UUIDField(auto_add=True, db_index=True, primary_key=True, unique=True)
     #objects = ExpressionManager()
 
     class Meta:
@@ -34,6 +34,14 @@ class Site(AbstractBaseModel):
  
     def __str__(self):
         return self.name
+
+@python_2_unicode_compatible
+class Url(AbstractBaseModel):
+    url = models.URLField()
+    site = models.ForeignKey(Site, blank=True)
+
+    def __str__(self):
+        return self.url
 
 class UserManager(BaseUserManager):
 
@@ -68,7 +76,7 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
     our needs. It's a full featured User model with admin-compliant 
     permissions.
     """
-    email = models.EmailField(_('email address'), blank=False, unique=True)
+    email = models.EmailField(_('email address'), blank=False)
     is_staff = models.BooleanField(_('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin '
                     'site.'))
@@ -80,12 +88,15 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email' #Must stay here because of validation
-    REQUIRED_FIELDS = ['uuid']
+    USERNAME_FIELD = 'uuid' #Must stay here because of validation
+    REQUIRED_FIELDS = ['email']
 
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
+
+    def __str__(self):
+        return self.email
 
     def get_short_name(self):
         "Returns the short name for the user."
@@ -100,13 +111,5 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
         Sends an email to this User.
         """
         send_mail(subject, message, from_email, [self.email], **kwargs)
-
-@python_2_unicode_compatible
-class Url(AbstractBaseModel):
-    url = models.URLField()
-    site = models.ForeignKey(Site, blank=True)
-
-    def __str__(self):
-        return self.url
 
 

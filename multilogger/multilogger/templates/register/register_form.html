@@ -8,7 +8,7 @@
     <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
-<form action="{%url 'landing' %}" method="POST">{% csrf_token %}
+<form action="{%url 'register:signup' uuid %}" method="POST">{% csrf_token %}
   {{ user_form|crispy }}
   {{ profile_form|crispy }}
   <input type="submit" value="Submit" />

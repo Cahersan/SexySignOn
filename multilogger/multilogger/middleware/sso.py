@@ -46,9 +46,11 @@ class SSOSessionMiddleware(object):
                             secure=settings.SESSION_COOKIE_SECURE or None,
                             httponly=settings.SESSION_COOKIE_HTTPONLY or None)
                     if hasattr(request, 'user') and request.user.is_authenticated():
-                        request.session['uuid'] = request.user.uuid.urn.split(":")[2]
-                        request.session['site'] = request.get_host()
-                        request.session['email'] = request.user.email
+                        request.session['_auth_user_id'] = str(request.user.uuid)
+                        request.session['uuid'] = str(request.user.uuid)
+                        request.session['url'] = request.get_host()
+                        request.session['user'] = str(request.user)
+                        request.session['apps'] = [app.slug for app in request.user.site.apps.all()]
                     request.session.save()
         return response
 
